@@ -1,34 +1,24 @@
-import { login } from '@/api/system'
-import { setItem, getItem } from '@/utils/storage'
-import { TOKEN } from '@/constant'
+import { login, getUserInfo } from '@/api/system'
+
 export default {
   namespaced: true,
   state: () => ({
-    token: getItem(TOKEN) || ''
+    // 增加
+    userInfo: {}
   }),
   mutations: {
-    setToken(state, token) {
-      state.token = token
-      setItem(TOKEN, token)
+    // 增加
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
-    login(context, userInfo) {
-      const { username, password } = userInfo
-      return new Promise((resolve, reject) => {
-        login({
-          username,
-          password
-        })
-          .then((data) => {
-            resolve(data)
-            console.log(data)
-            this.commit('user/setToken', data.token)
-          })
-          .catch((err) => {
-            reject(err)
-          })
-      })
+    // 增加
+    async getUserInfo(context) {
+      const res = await getUserInfo()
+      console.log(res)
+      this.commit('user/setUserInfo', res.data)
+      return res
     }
   }
 }
