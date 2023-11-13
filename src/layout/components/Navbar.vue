@@ -38,6 +38,7 @@ import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
+import ThemePicker from '@/components/ThemeSelect'
 
 const route = useRoute()
 // 生成数组数据
