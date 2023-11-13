@@ -2,21 +2,6 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
 
-// 请求拦截器
-service.interceptors.request.use(
-  (config) => {
-    // 在这个位置需要统一去注入 token
-    if (store.getters.token) {
-      // 如果 token 存在，就注入 token
-      config.headers.Authorization = `Bearer ${store.getters.token}`
-    }
-    return config // 必须返回配置
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
-
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -38,6 +23,21 @@ service.interceptors.response.use(
   (error) => {
     // TODO: 将来处理 token 超时问题
     ElMessage.error(error.message) // 提示错误信息
+    return Promise.reject(error)
+  }
+)
+
+// 请求拦截器
+service.interceptors.request.use(
+  (config) => {
+    // 在这个位置需要统一去注入 token
+    if (store.getters.token) {
+      // 如果 token 存在，就注入 token
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+    return config // 必须返回配置
+  },
+  (error) => {
     return Promise.reject(error)
   }
 )

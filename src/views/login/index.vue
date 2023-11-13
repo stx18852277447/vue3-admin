@@ -30,12 +30,12 @@
         </el-form>
     </div>
 </template>
-  
+
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 // 登录动作处理
 const loading = ref(false)
@@ -43,55 +43,55 @@ const loginFormRef = ref(null)
 const store = useStore()
 const router = useRouter()
 const handleLogin = () => {
-    loginFormRef.value.validate((valid) => {
-        if (!valid) return
-        loading.value = true
-        store
-            .dispatch('user/login', loginForm.value)
-            .then(() => {
-                loading.value = false
-                // TODO: 登录后操作
-                router.push('/')
-            })
-            .catch((err) => {
-                console.log(err)
-                loading.value = false
-            })
-    })
+  loginFormRef.value.validate((valid) => {
+    if (!valid) return
+    loading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() => {
+        loading.value = false
+        // TODO: 登录后操作
+        router.push('/')
+      })
+      .catch((err) => {
+        console.log(err)
+        loading.value = false
+      })
+  })
 }
 
 // 处理密码框文本显示状态
 const passwordType = ref('password')
 const onChangePwdType = () => {
-    if (passwordType.value === 'password') {
-        passwordType.value = 'text'
-    } else {
-        passwordType.value = 'password'
-    }
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
 }
 
 // 数据源
 const loginForm = ref({
-    username: 'admin',
-    password: 'admin123'
+  username: 'admin',
+  password: 'admin123'
 })
 
 // 验证规则
 const loginRules = ref({
-    username: [
-        {
-            required: true,
-            trigger: 'blur',
-            message: '用户名为必填项'
-        }
-    ],
-    password: [
-        {
-            required: true,
-            trigger: 'blur',
-            validator: validatePassword()
-        }
-    ]
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名为必填项'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
 
 })
 </script>
