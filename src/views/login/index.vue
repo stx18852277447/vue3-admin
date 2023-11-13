@@ -35,11 +35,13 @@
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router';
 
 // 登录动作处理
 const loading = ref(false)
 const loginFormRef = ref(null)
 const store = useStore()
+const router = useRouter()
 const handleLogin = () => {
     loginFormRef.value.validate((valid) => {
         if (!valid) return
@@ -49,6 +51,7 @@ const handleLogin = () => {
             .then(() => {
                 loading.value = false
                 // TODO: 登录后操作
+                router.push('/')
             })
             .catch((err) => {
                 console.log(err)
