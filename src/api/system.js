@@ -15,7 +15,7 @@ export const login = (data) => {
  */
 export const getUserInfo = () => {
   return request({
-    url: '/SysProfileController'
-    // url: '/system/user/profile'
+    // url: '/SysProfileController'
+    url: '/system/user/profile'
   })
 }

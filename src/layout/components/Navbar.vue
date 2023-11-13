@@ -26,9 +26,10 @@
 
 <script setup>
 import { } from 'vue'
+import { useStore } from 'vuex';
 
 //退出登陆处理
-const store = useStroe()
+const store = useStore()
 const logout = () => {
   store.dispatch('/user/logout')
 }
