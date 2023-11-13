@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="loginFromRef" :model="loginForm" :rules="loginRules">
+    <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFormRef">
       <div class="title-container">
         <h3 class="title">{{ $t('msg.login.title') }}</h3>
         <lang-select class="lang-select" effect="light"></lang-select>
@@ -17,16 +17,15 @@
         <span class="svg-container">
           <svg-icon icon="password" />
         </span>
-        <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password" />
+        <el-input placeholder="password" name="password" v-model="loginForm.password" ref="password"
+          :type="passwordType" />
         <span class="show-pwd">
           <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @click="onChangePwdType" />
         </span>
       </el-form-item>
-
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLogin">
-        {{ $t('msg.login.loginBtn') }}
+      <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLogin">{{
+        $t('msg.login.loginBtn') }}
       </el-button>
-
       <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
@@ -40,11 +39,44 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import LangSelect from '@/components/LangSelect'
 
+// 登录动作处理
+const loading = ref(false)
+const loginFormRef = ref(null)
+const store = useStore()
+const router = useRouter()
+
+const handleLogin = () => {
+  loginFormRef.value.validate((valid) => {
+    if (!valid) return
+    loading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then((res) => {
+        loading.value = false
+        // TODO: 登录后操作
+        router.push({ path: '/' })
+      })
+      .catch((err) => {
+        console.log(err)
+        loading.value = false
+      })
+  })
+}
+// 处理密码框文本显示状态
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 // 数据源
 const loginForm = ref({
   username: 'admin',
-  password: 'admin123'
+  password: '123456'
 })
+
 // 验证规则
 const i18n = useI18n()
 const loginRules = ref({
@@ -64,9 +96,9 @@ const loginRules = ref({
       validator: validatePassword()
     }
   ]
+
 })
 </script>
-
 <style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
