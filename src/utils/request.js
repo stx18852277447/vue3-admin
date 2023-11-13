@@ -13,12 +13,22 @@ service.interceptors.request.use(
   (config) => {
     // 在这个位置需要统一去注入 token
     if (store.getters.token) {
+      if (isCheckTimeout()) {
+        store.dispatch('user/logout')
+        return Promise.reject(new Error('Token 失效'))
+      }
       // 如果 token 存在，就注入 token
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     return config // 必须返回配置
   },
   (error) => {
+    // 处理 token 超时问题
+    if (error.response && error.response.data && error.response.data.code === 401) {
+      // token 超时
+      store.dispatch('user/logout')
+    }
+    ElMessage.error(error.message) // 提示错误信息
     return Promise.reject(error)
   }
 )

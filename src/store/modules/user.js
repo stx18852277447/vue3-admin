@@ -2,9 +2,9 @@
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
 // 增加 导入路由
 import router from '@/router'
-
 import { TOKEN } from '@/constant'
 import { login, getUserInfo } from '@/api/system'
+import { setTimeStamp } from '@/utils/auth'
 
 export default {
   namespaced: true,
@@ -33,6 +33,7 @@ export default {
         })
           .then((data) => {
             console.log(data)
+            setTimeStamp()
             this.commit('user/setToken', data.token)
             resolve(data)
           })
