@@ -1,4 +1,8 @@
 import { login, getUserInfo } from '@/api/system'
+// 增加解构 removeAllItem
+import { setItem, getItem, removeAllItem } from '@/utils/storage'
+// 增加 导入路由
+import router from '@/router'
 
 export default {
   namespaced: true,
@@ -13,12 +17,11 @@ export default {
     }
   },
   actions: {
-    // 增加
-    async getUserInfo(context) {
-      const res = await getUserInfo()
-      console.log(res)
-      this.commit('user/setUserInfo', res.data)
-      return res
+    logout() {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllItem()
+      router.push('/login')
     }
   }
 }

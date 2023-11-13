@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = defineConfig({
+  lintOnSave: false,
   transpileDependencies: true,
   chainWebpack(config) {
     // 设置 svg-sprite-loader
