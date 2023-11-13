@@ -4,7 +4,7 @@
         <use :xlink:href="iconName" />
     </svg>
 </template>
-
+  
 <script setup>
 import { isExternal as external } from '@/utils/validate'
 import { defineProps, computed } from 'vue'
@@ -37,7 +37,7 @@ const styleExternalIcon = computed(() => ({
  */
 const iconName = computed(() => `#icon-${props.icon}`)
 </script>
-
+  
 <style scoped>
 .svg-icon {
     width: 1em;

@@ -7,22 +7,18 @@
 
             <el-form-item prop="username">
                 <span class="svg-container">
-                    <svg-icon icon="https://free.wzznft.com/i/2023/11/13/pf7qqt.png"></svg-icon>
+                    <svg-icon icon="user" />
                 </span>
                 <el-input placeholder="username" name="username" type="text" />
             </el-form-item>
 
             <el-form-item prop="password">
                 <span class="svg-container">
-                    <el-icon>
-                        <edit />
-                    </el-icon>
+                    <svg-icon icon="password" />
                 </span>
                 <el-input placeholder="password" name="password" />
                 <span class="show-pwd">
-                    <el-icon>
-                        <edit />
-                    </el-icon>
+                    <svg-icon icon="eye" />
                 </span>
             </el-form-item>
 
@@ -33,9 +29,9 @@
 
 <script setup>
 import { } from 'vue'
-// 导入组件之后无需注册可直接使用
-import { Avatar, Edit } from '@element-plus/icons'
-import SvgIcon from '@/components/SvgIcon'
+// // 导入组件之后无需注册可直接使用
+// import { Avatar, Edit } from '@element-plus/icons'
+// import SvgIcon from '@/components/SvgIcon'
 </script>
 
 <style lang="scss" scoped>
