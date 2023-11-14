@@ -7,7 +7,6 @@
     </el-timeline-item>
   </el-timeline>
 </template>
-
 <script setup>
 import chapterList from '@/constant/chapter.json'
 const list = chapterList.list
