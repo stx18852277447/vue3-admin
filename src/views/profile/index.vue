@@ -8,11 +8,19 @@
       <el-button type="warning">Warning</el-button>
       <el-button type="danger">Danger</el-button>
     </el-row>
+    <router-view />
   </div>
 </template>
 
 <script setup>
-import { } from 'vue'
+import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+
+const store = useStore()
+generateNewStyle(store.getters.mainColor).then((newStyleText) => {
+  writeNewStyle(newStyleText)
+})
 </script>
+
 
 <style lang="scss" scoped></style>
