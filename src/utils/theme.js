@@ -8,11 +8,11 @@ import axios from 'axios'
  * @param {*} elNewStyle  element-plus 的新样式
  * @param {*} isNewStyleTag 是否生成新的 style 标签
  */
-export const writeNewStyle = (elNewStyle) => {
-  const style = document.createElement('style')
-  style.innerText = elNewStyle
-  document.head.appendChild(style)
-}
+export const writeNewStyle = elNewStyle => {
+    const style = document.createElement('style')
+    style.innerText = elNewStyle
+    document.head.appendChild(style)
+  }
 /**
  * 根据主色值，生成最新的样式表
  */

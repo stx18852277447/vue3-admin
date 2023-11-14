@@ -7,20 +7,18 @@ import store from '@/store'
 const messages = {
   en: {
     msg: {
-      test: 'hello world',
-      mEnLocale
+      ...mEnLocale
     }
   },
   zh: {
     msg: {
-      test: '你好世界',
-      mZhLocale
+      ...mZhLocale
     }
   }
 }
 
 // 创建 locale 语言变量
-const locale = 'zh'
+const locale = 'zh-cn'
 
 // 初始化 i18n 实例
 const i18n = createI18n({
@@ -31,10 +29,11 @@ const i18n = createI18n({
   locale: getLanguage(),
   messages
 })
-
+/**
+ * 返回当前 lang
+ */
 function getLanguage() {
   return store && store.getters && store.getters.language
 }
-
 // 导出 i18n 实例
 export default i18n

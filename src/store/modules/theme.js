@@ -1,6 +1,7 @@
 import { getItem, setItem } from '@/utils/storage'
 import { MAIN_COLOR, DEFAULT_COLOR } from '@/constant'
 import variables from '@/styles/variables.module.scss'
+
 export default {
   namespaced: true,
   state: () => ({

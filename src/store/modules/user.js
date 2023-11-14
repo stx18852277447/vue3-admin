@@ -1,9 +1,9 @@
 // 增加解构 removeAllItem
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
-// 增加 导入路由
-import router from '@/router'
 import { TOKEN } from '@/constant'
 import { login, getUserInfo } from '@/api/system'
+//增加导入路由
+import router from '@/router'
 import { setTimeStamp } from '@/utils/auth'
 
 export default {

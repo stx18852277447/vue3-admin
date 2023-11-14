@@ -30,7 +30,7 @@
     </el-form>
   </div>
 </template>
-
+  
 <script setup>
 import { ref, computed } from 'vue'
 import { validatePassword } from './rules'
@@ -74,7 +74,7 @@ const onChangePwdType = () => {
 // 数据源
 const loginForm = ref({
   username: 'admin',
-  password: '123456'
+  password: 'admin123'
 })
 
 // 验证规则

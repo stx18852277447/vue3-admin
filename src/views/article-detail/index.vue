@@ -1,9 +1,13 @@
 <template>
-  <div class="">article-detail</div>
+    <div>
+        文章详情
+    </div>
 </template>
 
 <script setup>
-import { } from 'vue'
+
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
