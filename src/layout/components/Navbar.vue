@@ -3,8 +3,8 @@
     <hamburger class="hamburger-container" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
-      <lang-select class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect" />
+      <lang-select class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -39,7 +39,7 @@ import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect'
-
+import Screenfull from '@/components/Screenfull'
 const route = useRoute()
 // 生成数组数据
 const breadcrumbData = ref([])
