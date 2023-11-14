@@ -10,12 +10,12 @@
     <div class="info">Web 全栈开发工程师</div>
   </div>
 </template>
-
+  
 <script setup>
 import MyAvatar from '@/components/MyAvatar/index.vue'
 import { } from 'vue'
 </script>
-
+  
 <style lang="scss" scoped>
 .author-container {
   .header {

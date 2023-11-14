@@ -35,8 +35,8 @@
 <script setup>
 import MyAvatar from '@/components/MyAvatar'
 import projectList from '@/constant/project.json'
-const list = projectList.list
-console.log(list)
+const list = projectList.projectList
+
 </script>
   
 <style lang="scss" scoped>
