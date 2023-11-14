@@ -1,53 +1,32 @@
 <template>
-    <div class="article-ranking-container">
+    <div class="article-create">
         <el-card>
-            <el-table ref="tableRef" :data="tableData" border>
-                <el-table-column label="排名" prop="ranking"></el-table-column>
-                <el-table-column label="标题" prop="title"></el-table-column>
-                <el-table-column label="作者" prop="author"></el-table-column>
-                <el-table-column label="发布日期" prop="publicDate"> </el-table-column>
-                <el-table-column label="描述" prop="desc"></el-table-column>
-                <el-table-column label="操作">
-                    <el-button type="primary" size="small" @click="onShowClick(row)">查看</el-button>
-                    <el-button type="danger" size="small" @click="onRemoveClick(row)">删除</el-button>
-                </el-table-column>
-            </el-table>
+            <el-input class="title-input" :placeholder="$t('msg.article.titlePlaceholder')" v-model="title" maxlength="20"
+                clearable>
+            </el-input>
+            <el-tabs v-model="activeName">
+                <el-tab-pane :label="$t('msg.article.markdown')" name="markdown">
+                    <markdown></markdown>
+                </el-tab-pane>
+                <el-tab-pane :label="$t('msg.article.richText')" name="editor">
+                    <editor></editor>
+                </el-tab-pane>
+            </el-tabs>
         </el-card>
     </div>
 </template>
   
 <script setup>
-import articleList from '@/constant/article.json'
+import Editor from './components/Editor.vue'
+import Markdown from './components/Markdown.vue'
+import { ref } from 'vue'
 
-const tableData = articleList.list
-console.log(tableData)
+const activeName = ref('markdown')
+const title = ref('')
 </script>
   
 <style lang="scss" scoped>
-.article-ranking-container {
-    padding: 40px;
-
-    .header {
-        margin-bottom: 20px;
-
-        .dynamic-box {
-            display: flex;
-            align-items: center;
-
-            .title {
-                margin-right: 20px;
-                font-size: 14px;
-                font-weight: bold;
-            }
-        }
-    }
-
-    ::v-deep(.el-table__row) {
-        cursor: pointer;
-    }
-
-    .pagination {
-        margin-top: 20px;
-        text-align: center;
-    }
-}</style>
+.title-input {
+    margin-bottom: 20px;
+}
+</style>
