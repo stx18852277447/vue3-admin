@@ -1,28 +1,40 @@
 <template>
-  <el-dialog :title="$t('msg.excel.title')" :model-value="modelValue" @close="closed" width="30%">
-    <el-input :placeholder="$t('msg.excel.placeholder')"></el-input>
+  <el-dialog title="导出excel数据" :model-value="modelValue" @close="closed" width="30%">
+    <el-input :placeholder="请输入" v-model="excelName" />
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="closed">{{ $t('msg.excel.close') }}</el-button>
-        <el-button type="primary" @click="onConfirm">{{ $t('msg.excel.confirm') }}</el-button>
+        <el-button @click="closed">关闭</el-button>
+        <el-button type="primary" @click="onConfirm" :loading="loading">确认</el-button>
       </span>
     </template>
   </el-dialog>
 </template>
 
+
 <script setup>
+import { ref } from 'vue'
+import { getUserManageList } from '@/api/system'
 defineProps({
   modelValue: {
     type: Boolean,
     required: true
   }
 })
+
 const emits = defineEmits(['update:modelValue'])
+
+const exportDefaultName = '用户信息表'
+const excelName = ref('')
+excelName.value = exportDefaultName
 
 /**
  * 导出按钮点击事件
  */
+const loading = ref(false)
 const onConfirm = async () => {
+  loading.value = true
+  const userList = (await getUserManageList()).rows
+  console.log(userList)
   closed()
 }
 
