@@ -1,3 +1,8 @@
+@import './variables.module.scss';
+@import './mixins.scss';
+@import './sidebar.scss';
+@import './element.scss';
+@import './transition.scss';
 html,
 body {
   height: 100%;
@@ -49,8 +54,3 @@ div:focus {
     height: 0;
   }
 }
-@import './variables.module.scss';
-@import './mixins.scss';
-@import './sidebar.scss';
-@import './element.scss';
-@import './transition.scss';

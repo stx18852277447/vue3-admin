@@ -19,7 +19,7 @@ import { } from 'vue'
     min-height: calc(100vh - 50px);
     width: 100%;
     min-height: calc(100vh - 50px - 43px);
-  padding: 104px 20px 20px 20px;
+    padding: 104px 20px 20px 20px;
     position: relative;
     overflow: hidden;
     padding: 61px 20px 20px 20px;

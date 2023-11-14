@@ -16,7 +16,7 @@
   
 <script setup>
 import ContextMenu from './ContextMenu.vue'
-import { ref, reactive,watch,visible  } from 'vue'
+import { ref, reactive, watch, visible } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -31,18 +31,18 @@ const isActive = tag => {
 /**
  * 关闭 右键 menu
  */
- const closeMenu = () => {
-  visible.value = false
+const closeMenu = () => {
+    visible.value = false
 }
 /**
  * 关闭 tag 的点击事件
  */
- const store = useStore()
+const store = useStore()
 const onCloseClick = (index) => {
-  store.commit('app/removeTagsView', {
-    type: 'index',
-    index: index
-  })
+    store.commit('app/removeTagsView', {
+        type: 'index',
+        index: index
+    })
 }
 /**
  * 展示 menu
@@ -57,12 +57,12 @@ const openMenu = (e, index) => {
 /**
  * 监听变化
  */
- watch(visible, (val) => {
-  if (val) {
-    document.body.addEventListener('click', closeMenu)
-  } else {
-    document.body.removeEventListener('click', closeMenu)
-  }
+watch(visible, (val) => {
+    if (val) {
+        document.body.addEventListener('click', closeMenu)
+    } else {
+        document.body.removeEventListener('click', closeMenu)
+    }
 })
 </script>
   

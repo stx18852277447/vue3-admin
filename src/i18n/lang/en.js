@@ -7,14 +7,14 @@ export default {
     desc: `
     Test authority account:<br />
      Provide three kinds of authority accounts:<br />
-     1. Super administrator account: super-admin <br />
+     1. Super administrator account: admin <br />
      2. Administrator account: admin <br />
      3. Test configurable account: test <br />
-     The uniform password is: 123456 <br />
+     The uniform password is: admin123 <br />
      <br />
      Import user account:<br />
      You can log in with the imported username <br />
-     The password is unified as: 123456 <br />
+     The password is unified as: admin123 <br />
      <b>Note: Import user-discriminatory Chinese and English libraries! ! ! ! </b>
     `
   },
@@ -82,8 +82,7 @@ export default {
     sidebarDesc: 'Project function menu'
   },
   profile: {
-    muted:
-      '"Vue3 rewrite vue-element-admin, realize the back-end front-end integrated solution" project demonstration',
+    muted: '"Vue3 rewrite vue-element-admin, realize the back-end front-end integrated solution" project demonstration',
     introduce: 'Introduce',
     projectIntroduction: 'Project Introduction',
     projectFunction: 'Project Function',
